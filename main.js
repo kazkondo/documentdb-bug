@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var connectionString = 'mongodb://WRITE_YOUR_CONNECTION_STRING'
+var connectionString = 'mongodb://ubn:1QaZxCvB@ds038739.mlab.com:38739/flow-test-ls'
 
 if ( connectionString == 'mongodb://WRITE_YOUR_CONNECTION_STRING') {
   console.log('Please change connection string in the main.js');
@@ -17,7 +17,7 @@ function testCode() {
   Cat.remove( {}).then( res => {
 
     var japanese = new Cat({ name: 'コード' });
-    japanese.save(function (err, result) 
+    japanese.save( (err, result) =>
     {
       if (err) return console.error(err);
 
@@ -28,12 +28,12 @@ function testCode() {
         console.log('-- it is ok ---');
 
         Cat.update( {_id:res._id}, { name:'コード' }).then( res => {          
-            Cat.find(function (err, kittens) {
+            Cat.find( (err, kitten) => {
 
               if (err) return console.error(err);
 
               console.log('-- when update ---');
-              console.log(kittens);
+              console.log(kitten);
               console.log('-- it is strange--');
             })
           }
